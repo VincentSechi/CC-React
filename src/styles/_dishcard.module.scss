@@ -1,0 +1,39 @@
+@import "./abstracts/variables.module.scss";
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    min-width: 30%;
+    max-width: 400px;
+    padding:20px 0;
+    box-shadow: 0 4px 4px rgba(0,0,0,.11);
+    transition: all .3s;
+}
+.isHovered{
+    background-color: $primary-color;
+    .title{
+        color:black;
+    }
+}
+.title{
+    display: flex;
+    gap:10px;
+    margin:0 auto;
+    color:$primary-color
+}
+.description{
+    flex:1;
+    max-width: 300px;
+    margin: 0 auto;
+}
+.image{
+    max-width: 400px;
+    height: 200px;
+    object-fit: cover;
+    margin:10px 0;
+}
+.price{
+margin-right: auto;
+color:black
+}
