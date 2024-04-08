@@ -6,6 +6,9 @@
     align-items: center;
     padding:10px 50px;
 }
+li{
+    list-style: none;
+}
 a{
     width: fit-content;
     margin-left: 50px;
