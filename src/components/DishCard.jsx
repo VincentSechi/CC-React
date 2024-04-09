@@ -1,6 +1,6 @@
 
 import Card from 'react-bootstrap/Card';
-import "../styles/dishcard.css"
+import "../assets/styles/dishcard.css"
 const DishCard = ({title, price, image}) => {
 
   return (
