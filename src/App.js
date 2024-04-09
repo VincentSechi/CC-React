@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
         <Routes>
-          <Route element={<Layout />}>s
+          <Route element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/plat/:slug" element={<DishDetails />} />
