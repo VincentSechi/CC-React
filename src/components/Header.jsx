@@ -1,14 +1,15 @@
 import React from "react";
-import styles from '../assets/styles/_header.module.scss'
+import '../assets/styles/header.scss'
 import Logo from "../assets/images/logo.webp";
 import { Navbar } from "react-bootstrap";
 
 import Nav from 'react-bootstrap/Nav';
 import Container from "react-bootstrap/Container";
 
+import { NavLink } from 'react-router-dom';
 const Header = () => {
   return (
-    <header className={styles.header}>
+    <header className="header">
       <Navbar className="bg-body-tertiary">
         <Container>
           <img
@@ -16,7 +17,8 @@ const Header = () => {
             alt="mexicano"
           />
           <Nav>
-            <Nav.Link href="/" className="ms-auto">Accueil</Nav.Link>
+            <NavLink to="/" className="nav-link ms-auto">Accueil</NavLink>
+            <NavLink to="/about" className="nav-link ms-auto">A propos</NavLink>
           </Nav>
         </Container>
       </Navbar>
