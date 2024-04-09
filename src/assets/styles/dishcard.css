@@ -1,6 +1,4 @@
 img{
     height: 250px;
-}
-div{
-    text-align:start;
+    object-fit: cover;
 }

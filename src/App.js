@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <Container className="p-5">
+        <Container>
           <Row>
-            <Col className="justify-content-center">
+            <Col>
               <DishCard
                 title={"Enchiladas"}
                 price={"12$"}
