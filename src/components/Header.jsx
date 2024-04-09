@@ -1,22 +1,28 @@
-import React from 'react'
-import styles from '../styles/_header.module.scss'
-import Logo from '../assets/images/logo.webp'
-import { Navbar } from 'react-bootstrap'
+import React from "react";
+import styles from "../styles/_header.module.scss";
+import Logo from "../assets/images/logo.webp";
+import { Navbar } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+
 const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.wrapper}>
-        <img className={styles.headerImg} src={Logo} alt='img' />
-        <Navbar className={styles.navbar}>
-          <ul className=''>
-            <li>
-              <a href="/">Accueil</a>
-            </li>
-          </ul>
-        </Navbar>
-      </div>
+      <Navbar className="bg-body-tertiary">
+        <Container>
+            <img
+              alt=""
+              src={Logo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />
+          <Navbar.Brand href="/" className={"justify-content-end"}>
+            Accueil
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

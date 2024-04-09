@@ -1,14 +1,16 @@
-import styles from '../styles/_dishcard.module.scss'
-const DishCard = ({title, price, image, slug}) => {
+
+import Card from 'react-bootstrap/Card';
+import "../styles/dishcard.css"
+const DishCard = ({title, price, image}) => {
 
   return (
-    <div className={`${styles.container}`}>
-        <img className={styles.image} src={image} alt={`icon-${slug}`}/>
-        <h2 className={styles.title}>{title}</h2>
-        <span className={styles.price}>{price}</span>
-        {/* <p className={styles.description}>{data.description}</p> */}
-        
-    </div>
+    <Card style={{ width: 'auto' }}>
+      <Card.Img variant="top" src={image}/>
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{price}</Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
 
