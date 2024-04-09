@@ -4,6 +4,7 @@ import "../assets/styles/dishcard.css"
 const DishCard = ({title, price, image}) => {
 
   return (
+    
     <Card style={{ width: 'auto' }}>
       <Card.Img variant="top" src={image}/>
       <Card.Body>
