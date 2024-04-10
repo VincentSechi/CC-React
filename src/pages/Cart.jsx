@@ -5,18 +5,30 @@ import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
 import { useContext } from 'react'
 import { ThemeContext } from "../utils/context/ThemeContext";
-/* import Col from "react-bootstrap/Col";
+import Col from "react-bootstrap/Col";
+import { useState, useEffect } from "react"
 import { Button } from "react-bootstrap";
-import { useState, useEffect } from "react" */
 
 const Panier = () => {
   const cartContext = useContext(ThemeContext)
   const cart = cartContext.cart
-  console.log(cart);
+
+  const handleIncrease = (item) => {
+    cartContext.addToCart(item, (item.quantity+1))
+  }
+  const handleDecrease = (item) => {
+    if(item.quantity > 0){
+      cartContext.addToCart(item, (item.quantity-1))
+    }
+    
+  }
+  
   return (
     <Container>
       <Row>
-        <h1>Panier</h1>
+        <Col>
+          <h1>Panier</h1>
+        </Col>
       </Row>
       <Row>
         <Table striped bordered hover>
@@ -28,7 +40,7 @@ const Panier = () => {
               <th>Total</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody> 
             {cart &&
               cart.map((item, index) => {
                 return (
@@ -37,6 +49,10 @@ const Panier = () => {
                     <td>{item.price}$</td>
                     <td>{item.quantity}</td>
                     <td>{item.quantity * item.price}$</td>
+                    <td>
+                      <Button onClick={() => handleDecrease(item)} variant="danger" className="me-2">-</Button> 
+                      <Button onClick={() => handleIncrease(item)}>+</Button>
+                    </td>
                   </tr>
                 );
               })}

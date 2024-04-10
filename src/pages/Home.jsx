@@ -36,7 +36,7 @@ const Home = () => {
         {dishes &&
           dishes.map((dish, index) => {
             return (
-              <Col>
+              <Col key={index}>
                 <DishCard
                   title={dish.title}
                   price={dish.price}

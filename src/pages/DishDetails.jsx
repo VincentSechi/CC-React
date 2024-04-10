@@ -10,19 +10,18 @@ import dishes from "../data/dishes.json";
 import "../assets/styles/pages/dishDetails.scss";
 import { ThemeContext } from "../utils/context/ThemeContext";
 
-const DishDetails = ({ onClick }) => {
+const DishDetails = () => {
   const { slug } = useParams();
   const [data, setData] = useState();
   useEffect(() => {
     setData(dishes.filter((dish) => dish.slug === slug)[0]);
   }, [slug]);
 
-  const [counter, setCounter] = useState(1)
   const handleClick = (item) => {
-    setCounter(prevState => prevState+1)
-    cartContext.addToCart(item, counter);
+    cartContext.addToCart(item, item.quantity+1);
   }
   const cartContext = useContext(ThemeContext);
+
 
   return (
     <>
