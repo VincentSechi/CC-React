@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import styles from "../assets/styles/pages/_dishDetails.module.scss"
 import { ThemeContext } from "../utils/context/ThemeContext.js";
 import { createDefineEnv } from "next/dist/build/swc";
-const DishDetails = () => {
+const DishDetails = ({onClick}) => {
 
   const cart = useContext(ThemeContext);
   const [countProduct, setCountProduct] = useState(1)
@@ -25,13 +25,9 @@ const DishDetails = () => {
   }, [slug]);
 
 
-  const addToCart = (item) => {
-    if(!cart.cart.includes(item)){
-      cart.addToCart(item);
-    }else{
-      console.log(cart)
-    }
-  };
+const handleClick = (item) => {
+  onClick(item)
+}
 
 
   const handleIncrease = () => {
@@ -69,7 +65,7 @@ const DishDetails = () => {
                   <div className={styles.buttonIncrease} onClick={handleIncrease}>+</div>
                   <div className={styles.buttonReset} onClick={handleReset}>Réinitialiser</div>
                 </div>
-                <Button onClick={() => addToCart(data, countProduct)} variant="primary">Commander</Button>
+                <Button onClick={() => handleClick} variant="primary">Commander</Button>
               </div>
             </Col>
           </Row>

@@ -7,10 +7,16 @@ import DishDetails from "./pages/DishDetails";
 import NotFound from "./pages/NotFound";
 import { Route, Routes } from "react-router-dom";
 import Panier from "./pages/Panier";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "./utils/context/ThemeContext.js";
 function App() {
-  const cart = useContext(ThemeContext);
+
+  const [cart, setCart] = useState(0)
+
+  const addToCart = (data) => {
+    setCart(prevState => [...prevState, data])
+  }
+  
 
   return (
     <div className="App">
@@ -21,7 +27,7 @@ function App() {
           <Route path="/panier" element={<Panier cart={cart.cart} />} />
           <Route
             path="/plat/:slug"
-            element={<DishDetails />}
+            element={<DishDetails onClick={addToCart} />}
           />
           <Route path="*" element={<NotFound />} />
         </Route>
