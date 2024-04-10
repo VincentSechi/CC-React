@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Container from "react-bootstrap/Container";
 
 import { NavLink } from 'react-router-dom';
-const Header = ({cart}) => {
+const Header = () => {
   return (
     <header className="header">
       <Navbar className="bg-body-tertiary">
@@ -19,7 +19,7 @@ const Header = ({cart}) => {
           <Nav>
             <NavLink to="/" className="nav-link ms-auto">Accueil</NavLink>
             <NavLink to="/about" className="nav-link ms-auto">A propos</NavLink>
-            <NavLink to="/panier" className="nav-link ms-auto">Panier({cart.length})</NavLink>
+            <NavLink to="/panier" className="nav-link ms-auto">Panier(0)</NavLink>
           </Nav>
         </Container>
       </Navbar>
