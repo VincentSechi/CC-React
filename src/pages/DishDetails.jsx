@@ -9,6 +9,7 @@ import { useState, useEffect, useContext } from "react";
 import dishes from "../data/dishes.json";
 import "../assets/styles/pages/dishDetails.scss";
 import { ThemeContext } from "../utils/context/ThemeContext";
+import { Helmet } from "react-helmet";
 
 const DishDetails = () => {
   const { slug } = useParams();
@@ -25,6 +26,9 @@ const DishDetails = () => {
 
   return (
     <>
+    <Helmet>
+      <title>{data ? data.title : "Mexican Food"}</title>
+    </Helmet>
       {data && (
         <Container>
           <Row>

@@ -7,10 +7,15 @@ import DishDetails from "./pages/DishDetails";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import { Route, Routes } from "react-router-dom";
+
+import {Helmet} from "react-helmet";
 function App() {
   
   return (
     <div className="App">
+      <Helmet>
+        <title>Mexican Food</title>
+      </Helmet>
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Home />} />

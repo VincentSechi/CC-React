@@ -5,7 +5,7 @@ import { Navbar } from "react-bootstrap";
 
 import Nav from 'react-bootstrap/Nav';
 import Container from "react-bootstrap/Container";
-import { useContext, useState, useEffect } from 'react'
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom';
 import { ThemeContext } from "../utils/context/ThemeContext";
 const Header = () => {

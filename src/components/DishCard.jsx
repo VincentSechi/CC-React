@@ -14,7 +14,7 @@ const DishCard = ({title, price, image, slug, newDish=false}) => {
         </div>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
-          <Card.Text>{price}</Card.Text>
+          <Card.Text>{price}$</Card.Text>
         </Card.Body>
       </Card>
     </Link>
