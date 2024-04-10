@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import "../assets/styles/dishcard.css"
 import { Link } from 'react-router-dom';
 import Badge from 'react-bootstrap/Badge';
-const DishCard = ({title, price, image, slug, newDish=false}) => {
+const DishCard = ({title, price, image, slug, newDish = false}) => {
 
   return (
     <Link to={`/plat/${slug}`} className='link'>
