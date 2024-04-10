@@ -15,8 +15,10 @@ const Header = () => {
     cartContext.cart.map((item) => {
       if(item.quantity){
         total+=item.quantity
+        cartContext.total = total;
       }else{
         total+=1;
+        cartContext.total = total;
       }
     })
   }

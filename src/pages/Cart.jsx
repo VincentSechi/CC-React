@@ -20,14 +20,25 @@ const Panier = () => {
     if(item.quantity > 0){
       cartContext.addToCart(item, (item.quantity-1))
     }
-    
   }
+  let totalPrice = 0;
+  const getTotalPrice = () => {
+    cartContext.cart.map((item) => {
+      if(item.quantity){
+        totalPrice+=item.quantity*item.price
+      }
+    })
+  }
+  getTotalPrice()
   
   return (
     <Container>
       <Row>
         <Col>
-          <h1>Panier</h1>
+          <h1>Panier ({cartContext.total})</h1>
+        </Col>
+        <Col>
+          <span>Prix total: {totalPrice} $</span>
         </Col>
       </Row>
       <Row>

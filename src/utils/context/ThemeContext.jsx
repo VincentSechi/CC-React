@@ -15,7 +15,7 @@ export const ThemeProvider = ({ children }) => {
         }
     }
   return (
-    <ThemeContext.Provider value={{ cart, addToCart }}>
+    <ThemeContext.Provider value={{ cart, addToCart, total }}>
       {children}
     </ThemeContext.Provider>
   );
