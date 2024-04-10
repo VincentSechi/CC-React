@@ -14,14 +14,14 @@ import { Helmet } from "react-helmet";
 const DishDetails = () => {
   const { slug } = useParams();
   const [data, setData] = useState();
+  const cartContext = useContext(ThemeContext);
   useEffect(() => {
     setData(dishes.filter((dish) => dish.slug === slug)[0]);
   }, [slug]);
 
   const handleClick = (item) => {
-    cartContext.addToCart(item, item.quantity+1);
+    cartContext.addToCart(item);
   }
-  const cartContext = useContext(ThemeContext);
 
 
   return (

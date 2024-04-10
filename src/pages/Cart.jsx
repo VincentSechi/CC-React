@@ -3,34 +3,32 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
-import { useContext } from 'react'
+import { useContext } from "react";
 import { ThemeContext } from "../utils/context/ThemeContext";
 import Col from "react-bootstrap/Col";
 import { Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 
 const Panier = () => {
-  const cartContext = useContext(ThemeContext)
-  const cart = cartContext.cart
-
+  const cartContext = useContext(ThemeContext);
+  const cart = cartContext.cart;
   const handleIncrease = (item) => {
-    cartContext.addToCart(item, (item.quantity+1))
-  }
+    cartContext.addToCart(item);
+  };
+
   const handleDecrease = (item) => {
-    if(item.quantity > 0){
-      cartContext.addToCart(item, (item.quantity-1))
-    }
-  }
-  let totalPrice = 0;
+    cartContext.decreaseProduct(item);
+  };
+
   const getTotalPrice = () => {
-    cartContext.cart.map((item) => {
-      if(item.quantity){
-        totalPrice+=item.quantity*item.price
-      }
-    })
-  }
-  getTotalPrice()
-  
+    let tmpTotal = 0;
+    cart &&
+      cart.map((product) => (
+        tmpTotal += product.quantity * product.price
+      ));
+    return tmpTotal;
+  };
+  let totalPrice = getTotalPrice();
   return (
     <>
       <Helmet>
@@ -39,7 +37,7 @@ const Panier = () => {
       <Container>
         <Row>
           <Col>
-            <h1>Panier ({cartContext.total})</h1>
+            <h1>Panier ({cartContext.total ? cartContext.total : 0})</h1>
           </Col>
           <Col>
             <span>Prix total: {totalPrice} $</span>
@@ -55,7 +53,7 @@ const Panier = () => {
                 <th>Total</th>
               </tr>
             </thead>
-            <tbody> 
+            <tbody>
               {cart &&
                 cart.map((item, index) => {
                   return (
@@ -65,7 +63,13 @@ const Panier = () => {
                       <td>{item.quantity}</td>
                       <td>{item.quantity * item.price}$</td>
                       <td>
-                        <Button onClick={() => handleDecrease(item)} variant="danger" className="me-2">-</Button> 
+                        <Button
+                          onClick={() => handleDecrease(item)}
+                          variant="danger"
+                          className="me-2"
+                        >
+                          -
+                        </Button>
                         <Button onClick={() => handleIncrease(item)}>+</Button>
                       </td>
                     </tr>

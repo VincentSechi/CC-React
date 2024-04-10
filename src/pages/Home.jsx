@@ -6,13 +6,12 @@ import DishCard from "../components/DishCard.jsx";
 import React from "react";
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import dishesData from '../data/dishes.json'
+import dishesData from "../data/dishes.json";
 const Home = () => {
-  const [dishes, setDishes] = useState([])
+  const [dishes, setDishes] = useState([]);
   const [showNewOnly, setShowNewOnly] = useState(false);
   const handleShowNewOnly = () => {
     setShowNewOnly(!showNewOnly);
-    
   };
   useEffect(() => {
     const filteredDished = dishesData.filter((dish) => dish.new === true);
@@ -21,8 +20,8 @@ const Home = () => {
     } else {
       setDishes(dishesData);
     }
-  }, [showNewOnly])
-  
+  }, [showNewOnly]);
+
   return (
     <Container>
       <Row className="mb-3">
@@ -36,7 +35,7 @@ const Home = () => {
         {dishes &&
           dishes.map((dish, index) => {
             return (
-              <Col key={index}>
+              <Col key={index} xs={4}>
                 <DishCard
                   title={dish.title}
                   price={dish.price}
