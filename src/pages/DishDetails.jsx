@@ -21,14 +21,13 @@ const DishDetails = () => {
 
   const handleClick = (item) => {
     cartContext.addToCart(item);
-  }
-
+  };
 
   return (
     <>
-    <Helmet>
-      <title>{data ? data.title : "Mexican Food"}</title>
-    </Helmet>
+      <Helmet>
+        <title>{data ? data.title : "Mexican Food"}</title>
+      </Helmet>
       {data && (
         <Container>
           <Row>

@@ -5,12 +5,11 @@ import { Navbar } from "react-bootstrap";
 
 import Nav from 'react-bootstrap/Nav';
 import Container from "react-bootstrap/Container";
-import { useContext } from 'react'
 import { NavLink } from 'react-router-dom';
-import { ThemeContext } from "../utils/context/ThemeContext";
+import useGetTotal from "../utils/hooks/useGetTotal";
 const Header = () => {
-  const cartContext = useContext(ThemeContext)
 
+  const totalCart = useGetTotal();
   return (
     <header className="header">
       <Navbar className="bg-body-tertiary">
@@ -22,7 +21,7 @@ const Header = () => {
           <Nav>
             <NavLink to="/" className="nav-link ms-auto">Accueil</NavLink>
             <NavLink to="/about" className="nav-link ms-auto">A propos</NavLink>
-            <NavLink to="/panier" className="nav-link ms-auto">Panier ({cartContext.total})</NavLink>
+            <NavLink to="/panier" className="nav-link ms-auto">Panier ({totalCart})</NavLink>
           </Nav>
         </Container>
       </Navbar>

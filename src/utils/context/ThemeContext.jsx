@@ -2,7 +2,6 @@ import React, { useState, createContext } from "react";
 export const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
   const addToCart = (e) => {
     let newCart = [...cart];
     if (!newCart.includes(e)) {
@@ -12,7 +11,6 @@ export const ThemeProvider = ({ children }) => {
       product[0].quantity += 1;
     }
     setCart(newCart);
-    setTotal((products) => products + 1);
   };
 
   const decreaseProduct = (e) => {
@@ -27,11 +25,10 @@ export const ThemeProvider = ({ children }) => {
         setCart(newCart);
       }
     }
-    setTotal((products) => products - 1);
   };
 
   return (
-    <ThemeContext.Provider value={{ cart, total, addToCart, decreaseProduct }}>
+    <ThemeContext.Provider value={{ cart, addToCart, decreaseProduct }}>
       {children}
     </ThemeContext.Provider>
   );

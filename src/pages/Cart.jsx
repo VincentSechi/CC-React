@@ -3,11 +3,13 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../utils/context/ThemeContext";
+import useCalculate from "../utils/hooks/useCalculate";
 import Col from "react-bootstrap/Col";
 import { Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import useGetTotal from "../utils/hooks/useGetTotal";
 
 const Panier = () => {
   const cartContext = useContext(ThemeContext);
@@ -20,15 +22,18 @@ const Panier = () => {
     cartContext.decreaseProduct(item);
   };
 
-  const getTotalPrice = () => {
-    let tmpTotal = 0;
-    cart &&
-      cart.map((product) => (
-        tmpTotal += product.quantity * product.price
-      ));
-    return tmpTotal;
-  };
-  let totalPrice = getTotalPrice();
+  const totalPrice = useCalculate();
+  const totalCart = useGetTotal();
+/* 
+ const [price, setPrice] = useCalculate(cart)
+ useEffect(() => {
+   setPrice(cart)
+   console.log(price);
+ }, [cart])
+
+ 
+ 
+   */
   return (
     <>
       <Helmet>
@@ -37,7 +42,7 @@ const Panier = () => {
       <Container>
         <Row>
           <Col>
-            <h1>Panier ({cartContext.total ? cartContext.total : 0})</h1>
+            <h1>Panier ({totalCart})</h1>
           </Col>
           <Col>
             <span>Prix total: {totalPrice} $</span>
